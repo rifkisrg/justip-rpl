@@ -1,9 +1,17 @@
 <?php
 
-class Buku extends CI_Model{
+class ModelBuku extends CI_Model{
     public function __construct()
     {
         $this->load->database();
+    }
+
+    public function getAllBuku(){
+        $query = $this->db->select('*')->from('buku');
+
+        $result = $query->get()->result();
+
+        return $result;
     }
 
     public function getDataBukuById($idBuku){
