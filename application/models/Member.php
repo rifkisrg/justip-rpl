@@ -6,8 +6,8 @@ class Member extends CI_Model{
         $this->load->database();
     }
 
-    public function addMember($dataMember){
-        $this->db->insert('member', $dataMember);
+    public function getDataBuku($idBuku){
+        $this->db->select('*')->from('buku')->where('id_buku', $idBuku);
 
         
     }
