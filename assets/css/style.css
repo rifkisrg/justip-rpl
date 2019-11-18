@@ -1,7 +1,19 @@
+/* 
+main: #15BDDB
+secondary: #79E8E2
+2nd-main: #FAF8EF
+2nd-secondary: #F796D6
+*/
+
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 *{
     font-family: 'Roboto', sans-serif;
+}
+
+.navbar-custom{
+    background-color: #79E8E2;
+    color: #FAF8EF;
 }
 
 .b-card{

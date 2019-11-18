@@ -9,7 +9,7 @@ class ModelBuku extends CI_Model{
     public function getAllBuku(){
         $query = $this->db->select('*')->from('buku');
 
-        $result = $query->get()->result();
+        $result = $query->get()->result_array();
 
         return $result;
     }
@@ -17,7 +17,7 @@ class ModelBuku extends CI_Model{
     public function getDataBukuById($idBuku){
         $query = $this->db->select('*')->from('buku')->where('id_buku', $idBuku);
 
-        $result = $query->get()->result();
+        $result = $query->get()->resultarray();
 
         return $result;
     }

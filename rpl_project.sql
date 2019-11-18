@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Nov 2019 pada 16.57
+-- Waktu pembuatan: 12 Nov 2019 pada 13.19
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.2.12
 
@@ -31,9 +31,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `buku` (
   `id_buku` int(11) NOT NULL,
   `judul` varchar(255) NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
   `kategori` varchar(255) NOT NULL,
   `penulis` varchar(255) NOT NULL,
-  `tahun_terbit` varchar(255) NOT NULL
+  `tahun_terbit` varchar(255) NOT NULL,
+  `harga` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
