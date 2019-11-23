@@ -55,13 +55,60 @@ class Auth extends CI_Controller
             Username is not registered </div>');
             redirect('auth');
         }
-        $pass = $this->db->get_where('user', ['password' => $password]);
+    }
+
+    public function Admin()
+    {
+        $this->form_validation->set_rules('username', 'Username', 'trim|required');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = "Login Admin";
+            $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/Admin');
+            $this->load->view('templates/auth_footer');
+        } else {
+            $this->_loginAdmin();
+        }
+    }
+    private function _loginAdmin()
+    {
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+
+        $admin = $this->db->get_where('admin', ['username' => $username])->row_array();
+        //ada username
+        if ($admin) {
+            //jika aktif
+            if ($admin['is_active'] ==  1) {
+                if ($password == $admin['password']) {
+                    $data = [
+                        'username' => $admin['username'],
+                        'id_role' => $admin['id_role']
+                    ];
+
+                    $this->session->set_userdata($data);
+                    redirect('user');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Wrong Password </div>');
+                    redirect('auth/admin');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Username has not been activated </div>');
+                redirect('auth/admin');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Username is not registered </div>');
+            redirect('auth/admin');
+        }
     }
 
     public function registration()
     {
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
-        $this->form_validation->set_rules('username', 'Username', 'required|trim');
+        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
             'is_unique' => 'This Email has Already Registered!'
         ]);
@@ -95,6 +142,15 @@ class Auth extends CI_Controller
         }
     }
 
+    public function logoutAdmin()
+    {
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('role_id');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            You have been logout </div>');
+        redirect('auth/admin');
+    }
     public function logout()
     {
         $this->session->unset_userdata('username');
