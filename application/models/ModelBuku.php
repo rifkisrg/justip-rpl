@@ -143,4 +143,19 @@ class ModelBuku extends CI_Model{
             return false;
         }
     }
+
+    public function addEventBooks($data){
+        $this->db->insert('events_book', $data);
+    }
+
+    public function deleteEventBook($data){
+        $this->db->where('id_eventsbook', $data);
+        $this->db->delete('events_book');
+    }
+
+    public function updateBuku($newData){
+        $this->db->set($newData);
+        $this->db->where('id_buku', $newData['id_buku']);
+        $this->db->update('buku');
+    }
 }

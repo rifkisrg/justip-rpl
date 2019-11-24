@@ -130,3 +130,8 @@ body{
 #form-profile{
     background-color: #FAF8ED;
 }
+
+/* Form Tambah Event */
+.boxsizingBorder {
+	width: 100%;
+}

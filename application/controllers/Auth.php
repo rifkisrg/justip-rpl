@@ -32,15 +32,26 @@ class Auth extends CI_Controller
             //jika aktif
             if (!$this->session->has_userdata('active')) {
                 if (password_verify($password, $user['password'])) {
-                    $data = [
-                        'active' => true,
-                        'username' => $user['username'],
-                        'id_member' => $user['id_member'],
-                        'name' => $user['name']
-                    ];
+                    if($user['role_id'] == 1){
+                        $data = [
+                            'active' => true,
+                            'username' => $user['username'],
+                            'name' => $user['name']
+                        ];
 
-                    $this->session->set_userdata($data);
-                    redirect(base_url());
+                        $this->session->set_userdata($data);
+                        redirect(base_url('admin'));
+                    }else{
+                        $data = [
+                            'active' => true,
+                            'username' => $user['username'],
+                            'id_member' => $user['id_member'],
+                            'name' => $user['name']
+                        ];
+    
+                        $this->session->set_userdata($data);
+                        redirect(base_url());
+                    }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Wrong Password </div>');

@@ -21,4 +21,10 @@ class ModelEvents extends CI_Model{
 
         return $result;
     }
+
+    public function updateEvent($newData){
+        $this->db->set($newData);
+        $this->db->where('id_event', $newData['id_event']);
+        $this->db->update('event');
+    }
 }
