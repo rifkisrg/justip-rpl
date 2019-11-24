@@ -1,34 +1,132 @@
 /* 
-main: #15BDDB
-secondary: #79E8E2
-2nd-main: #FAF8EF
-2nd-secondary: #F796D6
+main: #2F2B32
+secondary: #A7BF2E
+2nd-main: #FAF8ED
+2nd-secondary: #F95A37
 */
 
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-*{
+* {
     font-family: 'Roboto', sans-serif;
 }
 
-.navbar-custom{
-    background-color: #79E8E2;
-    color: #FAF8EF;
+body{
+    background-color: #2F2B32;
 }
 
-.b-card{
+.pad-100 {
+    padding: 100px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.navbar-custom {
+    background-color: #2F2B32;
+    text-decoration: none;
+}
+
+.navbar-custom a{
+    color: #FAF8ED;
+}
+
+#dropdown-menu a{
+    color: #2F2B32;
+}
+
+.b-card {
     position: relative;
-	display: -ms-flexbox;
+    display: -ms-flexbox;
     display: flex;
-	-ms-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
-	min-width: 0;
+    min-width: 0;
     word-wrap: break-word;
-	background-color: #fff;
+    background-color: #fff;
     background-clip: border-box;
-	border: 1px solid rgba(0, 0, 0, .125);
+    border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .5rem;
-    	/* border-color: #DD370C; */
+    /* border-color: #DD370C; */
     box-shadow: 1px 1px 2px 0 rgba(60, 64, 67, 0.302), 0 2px 6px 2px rgba(60, 64, 67, 0.14);
     margin-bottom: 3rem;
+}
+
+#eventList {
+    margin-bottom: 10rem;
+    background-color: #F95A37;
+    color: #FAF8ED
+}
+
+#bestEvents{
+    background-color: #A7BF2E;
+    color: #FAF8ED;
+}
+
+.events-list{
+    color: black;
+}
+
+.eventItem-group {
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    overflow-x: scroll;
+    color: #2F2B32;
+}
+
+.to-row {
+    scroll-snap-align: start;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.bestBooks-title {
+    margin-bottom: 50px;
+}
+
+#footer-nav {
+    background-color: #2F2B32;
+    color: #FAF8ED
+}
+
+.footer-area {
+    padding: 15px;
+    background-color: #F95A37;
+    color: #FAF8ED
+}
+
+/* Transaksi */
+#transaksi-body{
+    background: #A7BF2E;
+    color: #FAF8ED;
+}
+
+#tab-transaksi li a:active{
+    color: #2F2B32
+}
+
+#tab-content table{
+    color: #FAF8ED;
+}
+
+/* wishlist */
+#wishlist-body{
+    background-color: #FAF8ED;
+}
+
+/* Event Details */
+#eventdetail-body{
+    background-color: #FAF8ED;
+}
+
+/* Book Details */
+#bookdetail-body{
+    background-color: #FAF8ED;
+}
+
+/* Profile */
+#form-profile{
+    background-color: #FAF8ED;
 }
